@@ -17,20 +17,20 @@ router.get("/events", (req, res, next) => {
 
 //CREATE: display form
 // get /events/create
-router.get("/events/create", isLoggedIn, (req, res, next) => {
+router.get("/events/create", (req, res, next) => {
     res.render("events/create-event")
 });
 
 //CREATE: process form
 // post /events/create
-router.post("/events/create", isLoggedIn, (req, res, next) => {
+router.post("/events/create", (req, res, next) => {
     const newEvent = {
         title: req.body.title,
         description: req.body.description,
         location: req.body.location,
         date: req.body.date,
         organizer: req.body.organizer,
-        attendants: req.body.attendants,
+        attendees: req.body.attendees,
     }
     Event.create(newEvent)
         .then( () => res.redirect("/events"))
@@ -39,7 +39,7 @@ router.post("/events/create", isLoggedIn, (req, res, next) => {
 
 //READ: Event Details
 //get events/:eventId
-router.get("/events/:eventId", isLoggedIn, (req, res, next) => {
+router.get("/events/:eventId", (req, res, next) => {
     const eventId = req.params.eventId;
 
     Event.findbyId(eventId)
@@ -72,8 +72,8 @@ router.post("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
         description: req.body.description,
         location: req.body.location,
         date: req.body.date,
-        organizer: req.body.organizer,
-        attendants: req.body.attendants,
+        //organizer: req.body.organizer,
+        attendees: req.body.attendees,
     }
     Event.findByIdAndUpdate(eventId, newDetails)
         .then( () =>{
@@ -100,4 +100,3 @@ router.post("/events/:eventId/delete", isLoggedIn, (req, res, next) => {
   
 
   module.exports = router;
-  
