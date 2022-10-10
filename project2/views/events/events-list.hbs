@@ -1,14 +1,46 @@
-<h1>Upcoming Events:</h1>
+<h1>Collectin Of The Events:</h1>
 
 {{#each events}}
-    <section class="event-summary">
-        <h2>{{this.title}}</h2>
-        <p>
-            {{!-- Organizer: {{this.organizer.name}} <br /> --}}
-            date: {{this.date}} <br />
-            <a href="/events/{{_id}}">More details</a> |
-            <a href="/events/{{_id}}/edit">Edit</a>
-        </p>
+  <section class='event-summary'>
+    <h2>{{this.title}}</h2>
+    <label>
+      Title:
+      <input type='text' name='title' value='{{title}}' />
+    </label>
+    <label>
+      Description:
+      <textarea name='description' cols='30' rows='4'>
+        {{description}}
+      </textarea>
+    </label>
+    <label>
+      Organiser:
+      <select name='organiser'>
+        {{#each attendeesArr}}
+          <option value='{{this._id}}'>{{this.name}}</option>
+        {{/each}}
+      </select>
+    </label>
+    <label>
+      Location:
+      <input type='text' name='location' value='{{location}}' />
+    </label>
+    <label>
+      Date:
+      <input type='Date' name='date' value='{{date}}' />
+    </label>
+    <label>
+      Attendees:
+      <select name='attendees'>
+        {{#each attendeesArr}}
+          <option value='{{this._id}}'>{{this.name}}</option>
+        {{/each}}
+      </select>
+    </label>
 
-    </section>
+    <a href='/events/{{_id}}'>More details</a>
+    |
+    <a href='/events/{{_id}}/edit'>Edit</a>
+
+  </section>
 {{/each}}

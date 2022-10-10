@@ -1,25 +1,39 @@
 <h2>Create an Event</h2>
 
-<form action="/event/create" method="post">
-  <label> Event Title:
-    <input type="text" name="title" />
+<form action='/event/create' method='post'>
+  <label>
+    Title:
+    <input type='text' name='title' />
   </label>
 
-  <label> Date:
-    <input type="text" name="date" />
+  <label>
+    Description:
+    <textarea name='description' cols='30' rows='4'> </textarea>
+  </label>
+  <label>
+    Organiser:
+    <select name='organiser'>
+      {{#each attendeesArr}}
+        <option value='{{this._id}}'>{{this.name}}</option>
+      {{/each}}
+    </select>
+  </label>
+  <label>
+    Location:
+    <input type='text' name='location' />
+  </label>
+  <label>
+    Date:
+    <input type='Date' name='date' />
+  </label>
+  <label>
+    Attendees:
+    <select name='attendees'>
+      {{#each attendeesArr}}
+        <option value='{{this._id}}'>{{this.name}}</option>
+      {{/each}}
+    </select>
   </label>
 
-  <label> Location:
-    <input type="text" name="location" />
-  </label>
-
-  <label> Description:
-    <textarea name="description" cols="30" rows="4"> </textarea>
-  </label>
-
-  <label> Max attendees:
-    <input type="number" name="attendees" min="1" max="100" />
-  </label>
-
-  <button type="submit"> Create </button>
+  <button type='submit'> Create</button>
 </form>

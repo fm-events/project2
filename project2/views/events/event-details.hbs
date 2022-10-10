@@ -1,0 +1,44 @@
+<section class='event-details'>
+  <h2>{{title}}</h2>
+
+  <p>
+    <strong>Event:</strong>
+    <br />
+    {{event.title}}
+    <br />
+  </p>
+  <p>
+    <strong>Event Description:</strong>
+    {{event.description}}
+    <br />
+  </p>
+  <p>
+    <strong>Event Organiser:</strong>
+    {{event.organiser}}
+    <br />
+  </p>
+  <p>
+    <strong>Event Location:</strong>
+    {{event.location}}
+    <br />
+  </p>
+  <p>
+    <strong>Event Date:</strong>
+    {{event.date}}
+    <br />
+  </p>
+  <p>
+    <strong>Attendees:</strong>
+    {{event.attendees}}
+    <br />
+  </p>
+
+  <p>
+    <form action='/events/{{_id}}/delete' method='POST'>
+      <button>Delete</button>
+    </form>
+  </p>
+
+</section>
+
+<a href='/event'>Back</a>
