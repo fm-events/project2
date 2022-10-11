@@ -7,20 +7,14 @@
       Title:
       <input type='text' name='title' value='{{title}}' />
     </label>
-    <label>
-      Description:
-      <textarea name='description' cols='30' rows='4'>
-        {{description}}
-      </textarea>
-    </label>
-    <label>
+    {{!-- <label>
       Organiser:
       <select name='organiser'>
         {{#each attendeesArr}}
           <option value='{{this._id}}'>{{this.name}}</option>
         {{/each}}
       </select>
-    </label>
+    </label> --}}
     <label>
       Location:
       <input type='text' name='location' value='{{location}}' />
@@ -28,14 +22,6 @@
     <label>
       Date:
       <input type='Date' name='date' value='{{date}}' />
-    </label>
-    <label>
-      Attendees:
-      <select name='attendees'>
-        {{#each attendeesArr}}
-          <option value='{{this._id}}'>{{this.name}}</option>
-        {{/each}}
-      </select>
     </label>
 
     <a href='/events/{{_id}}'>More details</a>

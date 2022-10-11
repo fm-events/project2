@@ -11,6 +11,7 @@ const eventSchema = new Schema(
       },
     ],
     location: String,
+    maxAttendees: Number,
     date: Date,
     organizer: {
       type: Schema.Types.ObjectId,

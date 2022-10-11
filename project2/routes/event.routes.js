@@ -26,11 +26,11 @@ router.get("/events/create", (req, res, next) => {
 router.post("/events/create", (req, res, next) => {
     const newEvent = {
         title: req.body.title,
-        description: req.body.description,
         location: req.body.location,
+        maxAttendees: req.body.maxAttendees,
         date: req.body.date,
-        organizer: req.body.organizer,
-        attendees: req.body.attendees,
+        description: req.body.description,
+        //organizer: req.body.organizer,
     }
     Event.create(newEvent)
         .then( () => res.redirect("/events"))

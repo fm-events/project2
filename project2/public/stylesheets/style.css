@@ -1,6 +1,7 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+  background-color: aqua;
 }
 
 a {
@@ -9,4 +10,38 @@ a {
 
 h1 {
   color: 15px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid black;
+  width: 70%;
+  max-width: 100%;
+  padding: 5%;
+}
+form input {
+  border: 1px solid black;
+  width: 70%;
+  margin-top: 25px;
+  text-align: left;
+  max-width: 100%;
+  padding: 5%;
+}
+form textarea {
+  border: 1px solid black;
+  width: 70%;
+  margin-top: 25px;
+  text-align: left;
+
+  max-width: 100%;
+  padding: 5%;
+}
+form > label {
+  text-align: left;
+  margin: 10px;
+}
+button {
+  text-align: center;
+  margin-top: 5%;
 }
