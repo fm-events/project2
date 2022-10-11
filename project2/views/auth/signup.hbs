@@ -1,24 +1,30 @@
-<div>
+<h2>Sign Up</h2>
 
-   <h2>Signup</h2>
+<form action='/auth/signup' method='POST'>
+  <div class='form-group'>
+    <label for='exampleInputEmail1'>Email address</label>
+    <input
+      class='form-control'
+      name='email'
+      type='email'
+      id='exampleInputEmail1'
+      aria-describedby='emailHelp'
+      placeholder='Enter email'
+    />
+    <small id='emailHelp' class='form-text text-muted'>We'll never share your
+      email with anyone else.</small>
+  </div>
+  <div class='form-group'>
+    <label for='exampleInputPassword1'>Password</label>
+    <input
+      name='password'
+      type='password'
+      class='form-control'
+      id='exampleInputPassword1'
+      placeholder='Password'
+    />
+  </div>
 
-   <form action="/auth/signup" method="POST">
-      {{!-- <label>
-         Username
-         <input type="text" name="username" />
-      </label> --}}
+  <button type='submit' class='btn btn-primary'>Submit</button>
 
-      <label>
-         Email
-         <input type="email" name="email" placeholder="rockstar@ironhack.com" required />
-      </label>
-      <label>
-         Password
-         <input type="password" name="password" placeholder="********" required />
-      </label>
-
-      <button type="submit">Submit</button>
-
-   </form>
-   
-</div>
+</form>

@@ -1,32 +1,27 @@
-<h1>Collection Of The Events:</h1>
+<h3>Collection Of The Events:</h3>
 
 {{#each events}}
-  <section class='event-summary'>
-    <h2>{{this.title}}</h2>
-    <label>
-      Title:
-      <input type='text' name='title' value='{{title}}' />
-    </label>
-    {{!-- <label>
-      Organiser:
-      <select name='organiser'>
-        {{#each attendeesArr}}
-          <option value='{{this._id}}'>{{this.name}}</option>
-        {{/each}}
-      </select>
-    </label> --}}
-    <label>
-      Location:
-      <input type='text' name='location' value='{{location}}' />
-    </label>
-    <label>
-      Date:
-      <input type='text' name='date' value='{{date}}' />
-    </label>
 
-    <a href='/events/{{_id}}'>More details</a>
-    |
-    <a href='/events/{{_id}}/edit'>Edit</a>
+  <div class='container'>
+    <div class='card'>
+      <div class='card-body'>
+        <h4><Title>Title: </Title>{{title}}</h4>
+        <br />
+        <h4><title>Location:</title> {{location}}</h4>
+        <br />
+        <h6> <title>Date: </title>{{date}}</h6>
+        <br />
 
-  </section>
+        <button type='button' class='btn btn-info' href='/events/' {{_id}}>More
+          details</button>
+        <button
+          type='button'
+          class='btn btn-info'
+          href='/events/{{_id}}/edit'
+        >Edit</button>
+
+      </div>
+    </div>
+  </div>
+
 {{/each}}

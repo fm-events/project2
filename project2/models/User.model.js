@@ -20,14 +20,18 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Password is required.'],
     },
-    attendedEvents: [{
-      type: Schema.Types.ObjectId,
-      ref: "Event"
-    }],
-    organizedEvents: [{
-      type: Schema.Types.ObjectId,
-      ref: "Event"
-    }],
+    attendedEvents: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Event',
+      },
+    ],
+    organizedEvents: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Event',
+      },
+    ],
   },
   {
     timestamps: true,
