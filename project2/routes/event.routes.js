@@ -2,7 +2,7 @@ const router = require('express').Router();
 const Event = require("../models/Event.model");
 //const User = require("../models/User.model");
 
-const isLoggedIn = require("../middleware/isLoggedIn");
+//const isLoggedIn = require("../middleware/isLoggedIn");
 
 //READ: List all events
 //get /events
@@ -42,7 +42,7 @@ router.post("/events/create", (req, res, next) => {
 router.get("/events/:eventId", (req, res, next) => {
     const eventId = req.params.eventId;
 
-    Event.findbyId(eventId)
+    Event.findById(eventId)
         .then( (event) =>{
             res.render("events/event-details", event)
         })
@@ -52,7 +52,7 @@ router.get("/events/:eventId", (req, res, next) => {
 
 //UPDATE: display form
 // get /events/:eventId/edit
-router.get("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
+router.get("/events/:eventId/edit", (req, res, next) => {
     const eventId = req.params.eventId;
     
     Event.findById(eventId)
@@ -64,7 +64,7 @@ router.get("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
 
 //UPDATE: process form
 // post /events/:eventId/edit
-router.post("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
+router.post("/events/:eventId/edit", (req, res, next) => {
     const eventId = req.params.eventId;
     
     const newDetails = {
@@ -73,7 +73,7 @@ router.post("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
         location: req.body.location,
         date: req.body.date,
         //organizer: req.body.organizer,
-        attendees: req.body.attendees,
+        maxAttendees: req.body.maxAttendees,
     }
     Event.findByIdAndUpdate(eventId, newDetails)
         .then( () =>{
@@ -85,9 +85,9 @@ router.post("/events/:eventId/edit", isLoggedIn, (req, res, next) => {
 //DELETE:
 // post /events/:eventId/delete
 
-router.post("/events/:eventId/delete", isLoggedIn, (req, res, next) => {
+router.post("/events/:eventId/delete", (req, res, next) => {
 
-    Book.findByIdAndDelete(req.params.bookId)
+    Event.findByIdAndDelete(req.params.eventId)
       .then(() => {
         res.redirect("/events");
       })
