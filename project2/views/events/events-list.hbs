@@ -1,7 +1,13 @@
-<h3>Collection Of The Events:</h3>
-{{#each events}}
-  <div class='container'>
-    <div class='card'>
+<h3>Collection Of The Events</h3>
+<div class='card-deck'>
+  {{#each events}}
+    <div class='card mb-3'>
+      <img
+        src='https://cdn.mensagenscomamor.com/content/images/m000299823.jpg?v=1&w=1200&h=801'
+        class='card-img-top'
+        alt='birthday party img'
+      />
+      <br />
       <div class='card-body'>
         <h4><Title>Title: </Title>{{title}}</h4>
         <br />
@@ -14,6 +20,5 @@
         </div>
       </div>
     </div>
-  </div>
-
-{{/each}}
+  {{/each}}
+</div>
