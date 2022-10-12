@@ -1,44 +1,24 @@
-<section class='event-details'>
-  <h2>{{title}}</h2>
+<h3>Event Details</h3>
+<div class='container'>
+  <div class='card'>
+    <div class='card-body'>
+      <h5><strong>Event : </strong>{{title}}</h5>
+      <br />
+      <h6><strong>Location : </strong> {{location}}</h6>
+      <br />
+      <h6> <strong>Description : </strong>{{description}}</h6>
+      <br />
+      <h6> <strong>Date : </strong>{{date}}</h6>
+      <br />
+      <h6> <strong>Number Of Attendees: </strong>{{maxAttendees}}</h6>
+      <br />
+      <form action='/events/{{_id}}/delete' method='POST'>
+        <button id='dBtn' class='btn btn-info'>
+          Delete
+        </button>
+        <a class='btn btn-info' href='/events/{{_id}}/edit'>Edit</a>
+      </form>
 
-  <p>
-    <strong>Event:</strong>
-    <br />
-    {{title}}
-    <br />
-  </p>
-  <p>
-    <strong>Event Description:</strong>
-    {{description}}
-    <br />
-  </p>
-  {{!-- <p>
-    <strong>Event Organiser:</strong>
-    {{event.organiser}}
-    <br />
-  </p> --}}
-  <p>
-    <strong>Event Location:</strong>
-    {{location}}
-    <br />
-  </p>
-  <p>
-    <strong>Event Date:</strong>
-    {{date}}
-    <br />
-  </p>
-  <p>
-    <strong>Maximum Attendees:</strong>
-    {{maxAttendees}}
-    <br />
-  </p>
-
-  <p>
-    <form action='/events/{{_id}}/delete' method='POST'>
-      <button>Delete</button>
-    </form>
-  </p>
-
-</section>
-
-<a href='/events'>Back</a>
+    </div>
+  </div>
+</div>

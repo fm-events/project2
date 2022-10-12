@@ -1,7 +1,5 @@
 <h3>Collection Of The Events:</h3>
-
 {{#each events}}
-
   <div class='container'>
     <div class='card'>
       <div class='card-body'>
@@ -11,15 +9,9 @@
         <br />
         <h6> <title>Date: </title>{{date}}</h6>
         <br />
-
-        <button type='button' class='btn btn-info' href='/events/' {{_id}}>More
-          details</button>
-        <button
-          type='button'
-          class='btn btn-info'
-          href='/events/{{_id}}/edit'
-        >Edit</button>
-
+        <div class='d-flex justify-content-start'>
+          <a class='btn btn-info' href='/events/{{_id}}'>More details</a>
+        </div>
       </div>
     </div>
   </div>

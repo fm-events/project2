@@ -1,8 +1,38 @@
 body {
+  max-width: 100%;
   text-align: center;
-  padding: 50px;
-  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
-  background-color: whi;
+}
+.d-flex > a {
+  margin-right: 10px;
+}
+nav {
+  background-color: rgb(169, 131, 204);
+}
+.navbar-nav {
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: auto;
+}
+h3 {
+  margin: 25;
+  color: blue;
+}
+
+#dBtn {
+  color: white;
+}
+.container {
+  text-align: left;
+  margin: 35px 0 35px 0;
+  max-width: 100%;
+}
+.bg-dark {
+  margin-top: 25;
+  height: 100px;
+  margin-bottom: 0;
+  padding: 25;
+  text-align: center;
 }
 /* 
 a {
