@@ -1,23 +1,20 @@
-<h2>Welcome, {{this.username}}!</h2>
+<h2>Welcome {{this.username}}</h2>
 
+<div class='card' style='width: 18rem;'>
+  <img id='profilePic' src='{{this.profilePicture}}' alt='profile-picture' />
+  <div class='card-body'>
+    <h5 class='card-title'><strong>Username:</strong>{{this.username}}</h5>
 
-<div>
-    <div><img src="{{this.profilePicture}}" alt="profile-picture" /></div>
-    <div>
-        <div>
-        <p>Username:</p>
-        <h5> {{this.username}}</h5>
-        </div>
-        <div>
-        <p>Email:</p>
-        <h5>{{this.email}}</h5>
-        </div>
-    </div>
+  </div>
+  <div class='card-body'>
+    <h5 class='card-title'><strong>Email:</strong>{{this.email}}</h5>
 
-    <div>
-        <a href="/profile/edit"> Edit </a>
-        <form action="/profile/delete" method="POST">
-        <button>Delete</button>
-        </form>
-    </div>
+  </div>
+
+  <div class='card-body'>
+    <form action='/profile/delete' method='POST'>
+      <button id='dBtn' class='btn btn-info'>Delete</button>
+      <a class='btn btn-info' href='/profile/edit'>Edit</a>
+    </form>
+  </div>
 </div>

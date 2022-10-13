@@ -1,48 +1,97 @@
 <h3>Edit the Event</h3>
-<div class='container'>
-  <div class='card'>
-    <div class='card-body'>
-<form action='/events/{{_id}}/edit' method='post' enctype="multipart/form-data">
+<div class='card-deck'>
+  <div class='card mb-3'>
+    <div class='container'>
+      <div class='card-body'>
+        <img id='evetnPic' src='{{eventPicture}}' alt='event-picture' />
 
-  <div class='form-group form-control'>
-    <label>Title:</label>
-    <input class='form-control' type='text' name='title' value='{{title}}' />
-  </div>
+        <form
+          action='/events/{{_id}}/edit'
+          method='post'
+          enctype='multipart/form-data'
+        >
 
-  <div class='form-group'>
-    <label>Location:</label>
-    <input class='form-control' type='text' name='location' value='{{location}}' />
-  </div>
+          <div class='form-group'>
+            <label>Title:</label>
+            <input
+              class='form-control'
+              type='text'
+              name='title'
+              value='{{title}}'
+              required
+            />
+          </div>
 
-  <div class='form-group'>
-    <label>Maximum Attendees:</label>
-    <input class='form-control' type='number' name='maxAttendees' min='1' value='{{maxAttendees}}' />
-  </div>
+          <div class='form-group'>
+            <label>Location:</label>
+            <input
+              class='form-control'
+              type='text'
+              name='location'
+              value='{{location}}'
+              required
+            />
+          </div>
 
-  <div class='form-group'>
-    <label>Date:</label>
-    <input class='form-control' type='text' name='date' value='{{date}}' />
-  </div>
+          <div class='form-group'>
+            <label>Maximum Attendees:</label>
+            <input
+              class='form-control'
+              type='number'
+              name='maxAttendees'
+              min='1'
+              value='{{maxAttendees}}'
+            />
+          </div>
 
-  <div class='form-group'>
-    <label>Time:</label>
-    <input class='form-control' type='text' name='time' value='{{time}}' />
-  </div>
+          <div class='form-group'>
+            <label>Date:</label>
+            <input
+              class='form-control'
+              type='text'
+              name='date'
+              value='{{date}}'
+              required
+            />
+          </div>
 
-  <div class='form-group'>
-    <label>Description:</label>
-    <textarea class='form-control' name='description' cols='30' rows='4'> {{description}} </textarea>
-  </div>
+          <div class='form-group'>
+            <label>Time:</label>
+            <input
+              class='form-control'
+              type='text'
+              name='time'
+              value='{{time}}'
+              required
+            />
+          </div>
 
-  <div>
-      <label>Event Picture</label>
-      <input type="file" name="eventPicture" value="{{this.eventPicture}}" />
-  </div>
+          <div class='form-group'>
+            <label>Description:</label>
+            <textarea
+              class='form-control'
+              name='description'
+              cols='30'
+              rows='4'
+            >
+              {{description}}
+            </textarea>
+          </div>
 
-  <div class='form-group'>
-    <button class='btn btn-primary'>Save changes</button>
-  </div>
-</form>
-</div>
+          <div class='form-group'>
+            <label>Event Picture</label>
+            <input
+              type='file'
+              name='eventPicture'
+              value='{{this.eventPicture}}'
+            />
+          </div>
+
+          <div class='form-group'>
+            <button class='btn btn-primary'>Save changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>

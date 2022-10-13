@@ -1,29 +1,43 @@
-<h2>Edit Profile</h2>
-
-
-<div>
-    <form action='/profile/edit' method='post' enctype="multipart/form-data">
-
-        <div>
-            <label>Username:</label>
-            <input type='text' name='username' value='{{this.username}}' />
-        </div>
-
-        <div>
+<h3>Edit the Profile</h3>
+<div class='card-deck'>
+  <div class='card mb-3'>
+    <div class='container'>
+      <div class='card-body'>
+        <img
+          id='profilePic'
+          src='{{this.profilePicture}}'
+          alt='profile-picture'
+        />
+        <form
+          action='/profile/edit'
+          method='post'
+          enctype='multipart/form-data'
+        >
+          <div class='form-group'>
             <label>Email:</label>
-            <input type='email' name='email' value='{{this.email}}' />
-        </div>
+            <input
+              class='form-control'
+              type='email'
+              name='email'
+              value='{{this.email}}'
+            />
+          </div>
+          <div class='form-group'>
+            <label>Profile Picture</label>
+            <input
+              class='form-control'
+              type='file'
+              name='profilePicture'
+              value='{{this.profilePicture}}'
+            />
+          </div>
+          <div class='form-group'>
+            <button class='btn btn-primary' type='submit'>Save changes</button>
+          </div>
 
-        </div>
+        </form>
 
-        <div>
-            <label class="form-label">Profile Picture</label>
-            <input type="file" name="profilePicture" value="{{this.profilePicture}}" />
-        </div>
-
-        <div>
-            <button type="submit">Save changes</button>
-        </div>
-        
-    </form>
+      </div>
+    </div>
+  </div>
 </div>

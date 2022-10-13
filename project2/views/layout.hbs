@@ -1,10 +1,15 @@
 <html lang='en'>
-
   <head>
     <meta charset='UTF-8' />
     <meta name='viewport' content='width=device-width, initial-scale=1.0' />
     <meta http-equiv='X-UA-Compatible' content='ie=edge' />
     <title>{{appTitle}}</title>
+    <link rel='preconnect' href='https://fonts.googleapis.com' />
+    <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+    <link
+      href='https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap'
+      rel='stylesheet'
+    />
     <link
       rel='stylesheet'
       href='https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css'
@@ -14,14 +19,9 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
 
-  <body class='bg-transparent'>
+  <body>
     <nav class='navbar navbar-expand-lg navbar-light bg-light'>
-      <img
-        id='logo'
-        src="/images/fm.jpg"
-        class='navbar-brand'
-        href='/'
-      />
+      <img id='logo' src='/images/fm.jpg' class='navbar-brand' href='/' />
       <button
         class='navbar-toggler'
         type='button'
@@ -38,22 +38,31 @@
           <a class='nav-item nav-link' href='/'>Home
             <span class='sr-only'>(current)</span></a>
           <a class='nav-item nav-link' href='/events'>Events</a>
-          <a class='nav-item nav-link' href='/events/create'>Create your Event</a>
-          <a class='nav-item nav-link' href='/auth/signup'>Register</a>
-          <a class='nav-item nav-link' href='/auth/login'>Login</a>
+          {{#if userInSession}}
+            Hello,
+            {{userInSession.email}}
 
-          <form class='form-inline my-2 my-lg-0'>
+            <a class='nav-item nav-link' href='/profile'>Profile</a>
+            <a class='nav-item nav-link' href='/auth/logout'>Logout</a>
+
+          {{else}}
+            <a class='nav-item nav-link' href='/events/create'>Create your Event</a>
+            <a class='nav-item nav-link' href='/auth/signup'>Register</a>
+            <a class='nav-item nav-link' href='/auth/login'>Login</a>
+          {{/if}}
+
+          {{! <form class='form-inline my-2 my-lg-0'>
             <input
               class='form-control mr-sm-2'
               type='search'
               placeholder='Search'
               aria-label='Search'
-            />
+            /> 
             <button
               class='btn btn-outline-success my-2 my-sm-0'
               type='submit'
             >Search</button>
-          </form>
+          </form>}}
         </div>
       </div>
     </nav>
@@ -62,15 +71,15 @@
       <div class='carousel-inner'>
         <div class='carousel-item active'>
           <img
-            src="/images/fm.jpg"
+            src='/images/fm.jpg'
             class='d-block w-100 heroImg'
             alt='fm-events'
           />
-          {{!-- <div id='' class='carousel-caption d-none d-md-block'>
+          {{! <div id='' class='carousel-caption d-none d-md-block'>
             <h5>Free event planner</h5>
             <p>you can arange or join an events on this website for free</p>
             <button class='btn btn-outline-light'>Read More</button>
-          </div> --}}
+          </div> }}
         </div>
       </div>
     </div>
@@ -101,5 +110,4 @@
     ></script>
 
   </body>
-
 </html>

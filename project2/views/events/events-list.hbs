@@ -1,24 +1,31 @@
 <h3>Collection Of The Events</h3>
-<div class='card-deck'>
-  {{#each events}}
-    <div class='card mb-3'>
-      <img
-        src="/images/event.jpg"
-        class='card-img-top'
-        alt='birthday party img'
-      />
-      <br />
-      <div class='card-body'>
-        <h4><Title>Title: </Title>{{title}}</h4>
-        <br />
-        <h6><title>Location:</title> {{location}}</h6>
-        <br />
-        <h6> <title>Date: </title>{{date}}</h6>
-        <br />
-        <div class='d-flex justify-content-start'>
-          <a class='btn btn-info' href='/events/{{_id}}'>More details</a>
+<div class='container'>
+  <div class='row'>
+    {{#each events}}
+      <div class='col-12 col-md-3'>
+        <div class='card'>
+
+          <img
+            src='/images/event.jpg'
+            class='card-img-top'
+            alt='birthday party img'
+          />
+          <br />
+          <div class='card-body'>
+            <h4><Title>Title: </Title>{{title}}</h4>
+            <br />
+            <h6><title>Location:</title> {{location}}</h6>
+            <br />
+            <h6> <title>Date: </title>{{date}}</h6>
+            <br />
+            <div class='d-flex justify-content-start'>
+              <a class='btn btn-info' href='/events/{{_id}}'>More details</a>
+
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  {{/each}}
+    {{/each}}
+
+  </div>
 </div>
