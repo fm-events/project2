@@ -18,24 +18,28 @@ router.get('/events', (req, res, next) => {
 
 //CREATE: display form
 // get /events/create
-router.get('/events/create', (req, res, next) => {
+router.get('/events/create', isLoggedIn, (req, res, next) => {
   res.render('events/create-event');
 });
 
 //CREATE: process form
 // post /events/create
-router.post('/events/create', (req, res, next) => {
+router.post('/events/create', isLoggedIn, (req, res, next) => {
+  const organizer = req.session.user._id;
+  const {title, location, maxAttendees, date, time, description} = req.body
+
   const newEvent = {
-    title: req.body.title,
-    location: req.body.location,
-    maxAttendees: req.body.maxAttendees,
-    date: req.body.date,
-    time: req.body.time,
-    description: req.body.description,
-    //organizer: req.body.organizer,
+    title,
+    location,
+    maxAttendees,
+    date,
+    time,
+    description,
+    organizer,
   };
+
   Event.create(newEvent)
-    .then(() => res.redirect('/events'))
+    .then(() => console.log(newEvent))//res.redirect('/events'))
     .catch((err) => console.log(err));
 });
 
@@ -55,8 +59,10 @@ router.get('/events/:eventId', (req, res, next) => {
 // get /events/:eventId/edit
 router.get('/events/:eventId/edit', (req, res, next) => {
   const eventId = req.params.eventId;
-
+  
+  
   Event.findById(eventId)
+    .populate("organizer")
     .then((event) => {
       res.render('events/edit-event', event);
     })

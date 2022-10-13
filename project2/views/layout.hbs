@@ -39,14 +39,10 @@
             <span class='sr-only'>(current)</span></a>
           <a class='nav-item nav-link' href='/events'>Events</a>
           {{#if userInSession}}
-            Hello,
-            {{userInSession.email}}
-
+            <a class='nav-item nav-link' href='/events/create'>Create your Event</a>
             <a class='nav-item nav-link' href='/profile'>Profile</a>
             <a class='nav-item nav-link' href='/auth/logout'>Logout</a>
-
           {{else}}
-            <a class='nav-item nav-link' href='/events/create'>Create your Event</a>
             <a class='nav-item nav-link' href='/auth/signup'>Register</a>
             <a class='nav-item nav-link' href='/auth/login'>Login</a>
           {{/if}}
@@ -67,22 +63,6 @@
       </div>
     </nav>
     {{{body}}}
-    <div class='container-fluid'>
-      <div class='carousel-inner'>
-        <div class='carousel-item active'>
-          <img
-            src='/images/fm.jpg'
-            class='d-block w-100 heroImg'
-            alt='fm-events'
-          />
-          {{! <div id='' class='carousel-caption d-none d-md-block'>
-            <h5>Free event planner</h5>
-            <p>you can arange or join an events on this website for free</p>
-            <button class='btn btn-outline-light'>Read More</button>
-          </div> }}
-        </div>
-      </div>
-    </div>
 
     <div class='bg-dark py-3 text-light'>
       <div class='container'>

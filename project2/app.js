@@ -21,8 +21,10 @@ require('./config')(app);
 const capitalized = require('./utils/capitalized');
 const projectName = 'project2';
 
-app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
+//app.locals.appTitle = `${capitalized(projectName)} created with IronLauncher`;
 
+//use middleware to access current user info
+app.use("/", require("./middleware/currentUserInfo"));
 // 👇 Start handling routes here
 const index = require('./routes/index.routes');
 app.use('/', index);
