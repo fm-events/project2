@@ -1,0 +1,30 @@
+<h2>Edit Profile</h2>
+
+
+<div>
+    <form action='/profile/edit' method='post' enctype="multipart/form-data">
+
+        <div>
+            <label>Username:</label>
+            <input type='text' name='username' value='{{this.username}}' />
+            {{!-- <img src="{{this.profilePicture}}" alt="profile-picture" /> --}}
+        </div>
+
+        <div>
+            <label>Email:</label>
+            <input type='email' name='email' value='{{this.email}}' />
+        </div>
+
+        </div>
+
+        <div>
+            <label class="form-label">Profile Picture</label>
+            <input type="file" name="profilePicture" value="{{this.profilePicture}}" />
+        </div>
+
+        <div>
+            <button type="submit">Save changes</button>
+        </div>
+        
+    </form>
+</div>

@@ -1,0 +1,23 @@
+<h2>Welcome, {{this.username}}!</h2>
+
+
+<div>
+    <div><img src="{{this.profilePicture}}" alt="profile-picture" /></div>
+    <div>
+        <div>
+        <p>Username:</p>
+        <h5> {{this.username}}</h5>
+        </div>
+        <div>
+        <p>Email:</p>
+        <h5>{{this.email}}</h5>
+        </div>
+    </div>
+
+    <div>
+        <a href="/profile/edit"> Edit </a>
+        <form action="/profile/delete" method="POST">
+        <button>Delete</button>
+        </form>
+    </div>
+</div>

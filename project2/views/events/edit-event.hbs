@@ -2,9 +2,9 @@
 <div class='container'>
   <div class='card'>
     <div class='card-body'>
-<form action='/events/{{_id}}/edit' method='post'>
+<form action='/events/{{_id}}/edit' method='post' enctype="multipart/form-data">
 
-  <div class='form-gr class='form-control'oup'>
+  <div class='form-group form-control'>
     <label>Title:</label>
     <input class='form-control' type='text' name='title' value='{{title}}' />
   </div>
@@ -20,6 +20,12 @@
     <label>Date:</label>
     <input class='form-control' type='text' name='date' value='{{date}}' />
   </div>
+
+  <div class='form-group'>
+    <label>Time:</label>
+    <input class='form-control' type='text' name='time' value='{{time}}' />
+  </div>
+
   <div class='form-group'>
     <label>Description:</label>
     <textarea class='form-control' name='description' cols='30' rows='4'> {{description}} </textarea>

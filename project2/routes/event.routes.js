@@ -28,12 +28,13 @@ router.post('/events/create', (req, res, next) => {
     location: req.body.location,
     maxAttendees: req.body.maxAttendees,
     date: req.body.date,
+    time: req.body.time,
     description: req.body.description,
     //organizer: req.body.organizer,
   };
   Event.create(newEvent)
     .then(() => res.redirect('/events'))
-    .catch(() => res.redirect('/events/create'));
+    .catch((err) => console.log(err));
 });
 
 //READ: Event Details
@@ -70,6 +71,7 @@ router.post('/events/:eventId/edit', (req, res, next) => {
     description: req.body.description,
     location: req.body.location,
     date: req.body.date,
+    time: req.body.time,
     //organizer: req.body.organizer,
     maxAttendees: req.body.maxAttendees,
   };
