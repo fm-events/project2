@@ -8,14 +8,17 @@
     <label>Title:</label>
     <input class='form-control' type='text' name='title' value='{{title}}' />
   </div>
+
   <div class='form-group'>
     <label>Location:</label>
     <input class='form-control' type='text' name='location' value='{{location}}' />
   </div>
+
   <div class='form-group'>
     <label>Maximum Attendees:</label>
     <input class='form-control' type='number' name='maxAttendees' min='1' value='{{maxAttendees}}' />
   </div>
+
   <div class='form-group'>
     <label>Date:</label>
     <input class='form-control' type='text' name='date' value='{{date}}' />
@@ -30,6 +33,12 @@
     <label>Description:</label>
     <textarea class='form-control' name='description' cols='30' rows='4'> {{description}} </textarea>
   </div>
+
+  <div>
+      <label>Event Picture</label>
+      <input type="file" name="eventPicture" value="{{this.eventPicture}}" />
+  </div>
+
   <div class='form-group'>
     <button class='btn btn-primary'>Save changes</button>
   </div>

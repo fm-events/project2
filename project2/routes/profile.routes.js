@@ -2,8 +2,8 @@ const router = require('express').Router();
 const User = require("../models/User.model");
 
 const isLoggedIn = require("../middleware/isLoggedIn");
-const upload = require("../middleware/fileUploader")
-
+//const upload = require("../middleware/fileUploader");
+const fileUploader = require('../config/cloudinary.config');
 
 //READ: display user profile
 router.get('/profile', isLoggedIn, (req, res, next) => {
@@ -29,15 +29,19 @@ router.get('/profile/edit', isLoggedIn, (req, res, next) => {
 });
 
 //UPDATE: process form
-router.post('/profile/edit', isLoggedIn, upload.single("profilePicture"), (req, res, next) => {
+router.post('/profile/edit', isLoggedIn, fileUploader.single("profilePicture"), (req, res, next) => {
     const userId = req.session.user._id;
     
-    const newDetails = {
-        username: req.body.username,
-        email: req.body.email,
-        profilePicture: req.file.path.profilePicture,
-      };
-      User.findByIdAndUpdate(userId, newDetails)
+    const {username, email} = req.body;
+
+    let profilePicture;
+        if (req.file) {
+            profilePicture = req.file.path;
+        } else {
+            profilePicture = existingImage;
+        }
+
+      User.findByIdAndUpdate(userId, {username, email, profilePicture}, {new: true})
         .then(() => {
           res.redirect(`/profile`);
         })

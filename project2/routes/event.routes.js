@@ -2,7 +2,9 @@ const router = require('express').Router();
 const Event = require('../models/Event.model');
 //const User = require("../models/User.model");
 
-//const isLoggedIn = require("../middleware/isLoggedIn");
+const isLoggedIn = require("../middleware/isLoggedIn");
+const fileUploader = require('../config/cloudinary.config');
+
 
 //READ: List all events
 //get /events
@@ -63,19 +65,19 @@ router.get('/events/:eventId/edit', (req, res, next) => {
 
 //UPDATE: process form
 // post /events/:eventId/edit
-router.post('/events/:eventId/edit', (req, res, next) => {
+router.post('/events/:eventId/edit', isLoggedIn, fileUploader.single("eventPicture"), (req, res, next) => {
   const eventId = req.params.eventId;
+  
+  const { title, description, location, date, time, maxAttendees} = req.body.title;
+  
+  let eventPicture;
+  if (req.file) {
+      eventPicture = req.file.path;
+  } else {
+      eventPicture = existingImage;
+  }
 
-  const newDetails = {
-    title: req.body.title,
-    description: req.body.description,
-    location: req.body.location,
-    date: req.body.date,
-    time: req.body.time,
-    //organizer: req.body.organizer,
-    maxAttendees: req.body.maxAttendees,
-  };
-  Event.findByIdAndUpdate(eventId, newDetails)
+  Event.findByIdAndUpdate(eventId, {title, description, location, date, time, maxAttendees, eventPicture}, {new: true})
     .then(() => {
       res.redirect(`/events/${eventId}`);
     })

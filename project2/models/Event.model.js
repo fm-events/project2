@@ -2,6 +2,10 @@ const { Schema, model } = require('mongoose');
 
 const eventSchema = new Schema(
   {
+    eventPicture: {
+      type: String,
+      default: "/images/fm.jpg",
+    },
     title: String,
     description: String,
     attendees: [
