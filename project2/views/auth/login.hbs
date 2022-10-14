@@ -1,5 +1,13 @@
+<br>
+<br>
+
 <h3>Login</h3>
-<div class='container'>
+
+{{#if errorMessage}}
+    <p class="error">{{errorMessage}}</p>
+{{/if}}
+
+<div class='container' id="auth-page">
   <div class='card'>
     <div class='card-body'>
       <form action='/auth/login' method='POST'>
