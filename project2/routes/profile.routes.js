@@ -41,7 +41,7 @@ router.post(
     if (req.file) {
       profilePicture = req.file.path;
     } else {
-      profilePicture = existingImage;
+      profilePicture = "";
     }
 
     User.findByIdAndUpdate(

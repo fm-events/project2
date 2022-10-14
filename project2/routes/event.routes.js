@@ -25,21 +25,21 @@ router.get('/events/create', isLoggedIn, (req, res, next) => {
 //CREATE: process form
 // post /events/create
 router.post('/events/create', isLoggedIn, (req, res, next) => {
-  const organizer = req.session.user._id;
-  const {title, location, maxAttendees, date, time, description} = req.body
+  // const organizer = req.session.user._id;
+  // const {title, location, maxAttendees, date, time, description} = req.body
 
   const newEvent = {
-    title,
-    location,
-    maxAttendees,
-    date,
-    time,
-    description,
-    organizer,
+    title: req.body.title,
+    location: req.body.location,
+    maxAttendees: req.body.maxAttendees,
+    date: req.body.date,
+    time: req.body.time,
+    description: req.body.description,
+    organizer: req.body.organizer,
   };
 
   Event.create(newEvent)
-    .then(() => console.log(newEvent))//res.redirect('/events'))
+    .then(() => res.redirect('/events'))
     .catch((err) => console.log(err));
 });
 
@@ -66,7 +66,7 @@ router.get('/events/:eventId/edit', (req, res, next) => {
     .then((event) => {
       res.render('events/edit-event', event);
     })
-    .catch();
+    .catch((err) => console.log(err));
 });
 
 //UPDATE: process form
@@ -74,13 +74,20 @@ router.get('/events/:eventId/edit', (req, res, next) => {
 router.post('/events/:eventId/edit', isLoggedIn, fileUploader.single("eventPicture"), (req, res, next) => {
   const eventId = req.params.eventId;
   
-  const { title, description, location, date, time, maxAttendees} = req.body.title;
+  const newInfo = {
+    title: req.body.title, 
+    description: req.body.description, 
+    location:req.body.location, 
+    date:req.body.date, 
+    time:req.body.time, 
+    maxAttendees:req.body.maxAttendees,
+  }
   
   let eventPicture;
   if (req.file) {
       eventPicture = req.file.path;
   } else {
-      eventPicture = existingImage;
+      eventPicture = "/images/fm.jpg";
   }
 
   Event.findByIdAndUpdate(eventId, {title, description, location, date, time, maxAttendees, eventPicture}, {new: true})

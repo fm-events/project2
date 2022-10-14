@@ -1,50 +1,52 @@
 <h3>Create Event</h3>
-<div class='card-deck'>
-  <div class='card mb-3'>
-    <div class='container'>
-      <div class='card-body'>
-        <form action='/events/create' method='post'>
-          <div class='form-group'>
-            <label>Title:</label>
-            <input class='form-control' type='text' name='title' required/>
-          </div>
 
-          <div class='form-group'>
-            <label>Location:</label>
-            <input class='form-control' type='text' name='location' required/>
-          </div>
-
-          <div class='form-group'>
-            <label>Maximum Attendees:</label>
-            <input class='form-control' type='number' name='maxAttendees' min='1' required/>
-          </div>
-
-          <div class='form-group'>
-            <label>Date:</label>
-            <input class='form-control' type='text' name='date' placeholder='dd/mm/yyyy' required/>
-          </div>
-
-          <div class='form-group'>
-            <label>Time:</label>
-            <input class='form-control' type='time' name='time' required/>
-          </div>
-
-          <div class='form-group'>
-            {{!-- <label>Organizer:</label> --}}
-            <input type='hidden' name='organizer' value="{{userInSession._id}}"/>
-          </div>
-
-          <div class='form-group'>
-            <label>Description:</label>
-            <textarea class='form-control' name='description' cols='30' rows='4'></textarea>
-          </div>
-          
-          <div class='form-group'>
-            <button class='btn btn-info' type='submit'> Create </button>
-          </div>
-
-        </form>
+<div class='container'>
+  <div class='card-body'>
+    <form action='/events/create' method='post' enctype='multipart/form-data'>
+      <div class='form-group'>
+        <label>Title:</label>
+        <input class='form-control' type='text' name='title' required/>
       </div>
-    </div>
+
+      <div class='form-group'>
+        <label>Location:</label>
+        <input class='form-control' type='text' name='location' required/>
+      </div>
+
+      <div class='form-group'>
+        <label>Maximum Attendees:</label>
+        <input class='form-control' type='number' name='maxAttendees' min='1' required/>
+      </div>
+
+      <div class='form-group'>
+        <label>Date:</label>
+        <input class='form-control' type='text' name='date' placeholder='dd/mm/yyyy' required/>
+      </div>
+
+      <div class='form-group'>
+        <label>Time:</label>
+        <input class='form-control' type='time' name='time' required/>
+      </div>
+
+      <div class='form-group'>
+        {{!-- <label>Organizer:</label> --}}
+        <input type='hidden' name='organizer' value="{{userInSession._id}}"/>
+      </div>
+
+      <div class='form-group'>
+        <label>Description:</label>
+        <textarea class='form-control' name='description' cols='30' rows='4'></textarea>
+      </div>
+
+      <div class='form-group'>
+          <label>Event Picture</label>
+          <input class='form-control' type='file' name='eventPicture' value='{{this.eventPicture}}'/>
+      </div>
+      
+      <div class='form-group'>
+        <button class='btn btn-info' type='submit'> Create </button>
+      </div>
+
+    </form>
   </div>
 </div>
