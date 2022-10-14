@@ -26,7 +26,7 @@ router.get('/events/create', isLoggedIn, (req, res, next) => {
 // post /events/create
 router.post('/events/create', isLoggedIn, fileUploader.single("eventPicture"), (req, res, next) => {
 const organizer = req.session.user._id;
-const {title, location, maxAttendees, date, time, description} = req.body
+const {title, location, date, time, description} = req.body //maxAttendees removed
 
 let eventPicture;
 if (req.file) {
@@ -44,7 +44,7 @@ if (req.file) {
   //   organizer: req.body.organizer,
   // };
 
-  Event.create({title, location, maxAttendees, date, time, description, organizer, eventPicture})
+  Event.create({title, location, date, time, description, organizer, eventPicture}) //maxAttendees removed
     .then(() => res.redirect('/events'))
     .catch((err) => console.log(err));
 });
@@ -91,7 +91,7 @@ router.get('/events/:eventId/edit', isLoggedIn, (req, res, next) => {
 router.post('/events/:eventId/edit', isLoggedIn, fileUploader.single("eventPicture"), (req, res, next) => {
   const eventId = req.params.eventId;
   
-  const {title, description, location, date, time, maxAttendees} = req.body
+  const {title, description, location, date, time} = req.body //maxAttendees removed
   
   let eventPicture;
   if (req.file) {
@@ -100,7 +100,7 @@ router.post('/events/:eventId/edit', isLoggedIn, fileUploader.single("eventPictu
       eventPicture = "/images/fm.jpg";
   }
 
-  Event.findByIdAndUpdate(eventId, {title, description, location, date, time, maxAttendees, eventPicture}, {new: true})
+  Event.findByIdAndUpdate(eventId, {title, description, location, date, time, eventPicture}, {new: true}) //maxAttendees removed
     .then(() => {
       res.redirect(`/events/${eventId}`);
     })

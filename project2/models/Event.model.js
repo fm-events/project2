@@ -15,7 +15,7 @@ const eventSchema = new Schema(
       },
     ],
     location: String,
-    maxAttendees: Number,
+    // maxAttendees: Number,
     date: String,
     time: String,
     organizer: {

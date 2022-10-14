@@ -17,10 +17,10 @@
             <input class='form-control' type='text' name='location' value='{{location}}' required/>
           </div>
 
-          <div class='form-group'>
+          {{!-- <div class='form-group'>
             <label>Maximum Attendees:</label>
-            <input class='form-control' type='number' name='maxAttendees' min='1' value='{{maxAttendees}}'/>
-          </div>
+            <input class='form-control' type='hidden' name='maxAttendees' min='1' value='{{maxAttendees}}'/>
+          </div> --}}
 
           <div class='form-group'>
             <label>Date:</label>
@@ -38,7 +38,7 @@
 
           <div class='form-group'>
             <label>Event Picture</label>
-            <input type='file' name='eventPicture' value='{{this.eventPicture}}'/>
+            <input class='form-control' type='file' name='eventPicture' value='{{this.eventPicture}}'/>
           </div>
 
           <div class='form-group'>
