@@ -24,21 +24,27 @@ router.get('/events/create', isLoggedIn, (req, res, next) => {
 
 //CREATE: process form
 // post /events/create
-router.post('/events/create', isLoggedIn, (req, res, next) => {
-  // const organizer = req.session.user._id;
-  // const {title, location, maxAttendees, date, time, description} = req.body
+router.post('/events/create', isLoggedIn, fileUploader.single("eventPicture"), (req, res, next) => {
+const organizer = req.session.user._id;
+const {title, location, maxAttendees, date, time, description} = req.body
 
-  const newEvent = {
-    title: req.body.title,
-    location: req.body.location,
-    maxAttendees: req.body.maxAttendees,
-    date: req.body.date,
-    time: req.body.time,
-    description: req.body.description,
-    organizer: req.body.organizer,
-  };
+let eventPicture;
+if (req.file) {
+    eventPicture = req.file.path;
+} else {
+    eventPicture = "/images/fm.jpg";
+}
+  // const newEvent = {
+  //   title: req.body.title,
+  //   location: req.body.location,
+  //   maxAttendees: req.body.maxAttendees,
+  //   date: req.body.date,
+  //   time: req.body.time,
+  //   description: req.body.description,
+  //   organizer: req.body.organizer,
+  // };
 
-  Event.create(newEvent)
+  Event.create({title, location, maxAttendees, date, time, description, organizer, eventPicture})
     .then(() => res.redirect('/events'))
     .catch((err) => console.log(err));
 });
@@ -62,7 +68,6 @@ router.get('/events/:eventId/edit', (req, res, next) => {
   
   
   Event.findById(eventId)
-    .populate("organizer")
     .then((event) => {
       res.render('events/edit-event', event);
     })
@@ -74,14 +79,7 @@ router.get('/events/:eventId/edit', (req, res, next) => {
 router.post('/events/:eventId/edit', isLoggedIn, fileUploader.single("eventPicture"), (req, res, next) => {
   const eventId = req.params.eventId;
   
-  const newInfo = {
-    title: req.body.title, 
-    description: req.body.description, 
-    location:req.body.location, 
-    date:req.body.date, 
-    time:req.body.time, 
-    maxAttendees:req.body.maxAttendees,
-  }
+  const {title, description, location, date, time, maxAttendees} = req.body
   
   let eventPicture;
   if (req.file) {
@@ -106,7 +104,7 @@ router.post('/events/:eventId/delete', (req, res, next) => {
       res.redirect('/events');
     })
     .catch((err) => {
-      console.log('Error deleting book...', err);
+      console.log(err);
       next();
     });
 });
