@@ -51,27 +51,39 @@ if (req.file) {
 
 //READ: Event Details
 //get events/:eventId
-router.get('/events/:eventId', (req, res, next) => {
+router.get('/events/:eventId', isLoggedIn, (req, res, next) => {
   const eventId = req.params.eventId;
 
   Event.findById(eventId)
     .then((event) => {
-      res.render('events/event-details', event);
+       if (req.session.user._id == event.organizer) {
+        res.render('events/event-details', event);
+       } else {
+        res.render('events/event-details-read', event);
+       }
     })
-    .catch();
+    .catch(err => console.log(err));
 });
 
 //UPDATE: display form
 // get /events/:eventId/edit
-router.get('/events/:eventId/edit', (req, res, next) => {
+router.get('/events/:eventId/edit', isLoggedIn, (req, res, next) => {
   const eventId = req.params.eventId;
-  
   
   Event.findById(eventId)
     .then((event) => {
-      res.render('events/edit-event', event);
+        if (req.session.user._id == event.organizer) {
+          res.render('events/edit-event', event)
+        } else {
+          res.redirect('/events');
+        }
     })
     .catch((err) => console.log(err));
+  // Event.findById(eventId)
+  //   .then((event) => {
+  //     res.render('events/edit-event', event);
+  //   })
+  //   .catch((err) => console.log(err));
 });
 
 //UPDATE: process form
@@ -98,7 +110,7 @@ router.post('/events/:eventId/edit', isLoggedIn, fileUploader.single("eventPictu
 //DELETE:
 // post /events/:eventId/delete
 
-router.post('/events/:eventId/delete', (req, res, next) => {
+router.post('/events/:eventId/delete', isLoggedIn, (req, res, next) => {
   Event.findByIdAndDelete(req.params.eventId)
     .then(() => {
       res.redirect('/events');
